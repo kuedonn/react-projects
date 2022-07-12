@@ -11,8 +11,7 @@ const Weather = ()=>{
         .then((res)=>res.json())
         .then((data)=>{
             setData(data);
-            console.log(weather);
-            
+            console.log(weather);            
         })
         .catch((err)=>{console.log(err)})
     };
