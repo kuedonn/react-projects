@@ -1,15 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 
 const Weather = ()=>{
 
     const [weather, setData] = useState([]);
     const inputRef = useRef(null);
-
-
-    function handleInput() {
-        console.log(inputRef.current.value);   
-    };
 
     const fetchdata = () =>{
         fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputRef.current.value+'&appid=3915b57a37556d0743125578a4b6aaa8&units=metric')
@@ -21,10 +16,6 @@ const Weather = ()=>{
         })
         .catch((err)=>{console.log(err)})
     };
-
-   useEffect(()=>{
-    fetchdata()
-   },[]);
 
     return(
         <div>
@@ -44,7 +35,7 @@ const Weather = ()=>{
                 <option value="fmph">F/mph</option>
             </select>
             </div>
-        <input type="text" ref={inputRef}  className="input" name="input" onChange={handleInput} placeholder="Enter a city name"/>
+        <input type="text" ref={inputRef}  className="input" name="input" placeholder="Enter a city name"/>
         <input type="submit" className="button" onClick={fetchdata} value="Submit"/>
     </div>
     <div className="container">
